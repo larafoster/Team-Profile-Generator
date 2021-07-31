@@ -1,0 +1,56 @@
+
+/* global styles */
+:root {
+--light: #ededed;
+  --gray-md: #aeafaf;
+  --gray-dark: #6f6866;
+  --dark: #222;
+  --blue-dk: #003049ff;
+  --blue-md: #0dcaf0;
+--red: rgb(209, 83, 83);
+--orange: #f77f00ff;
+--yellow: #fcbf49ff;
+--yellow-lt: #eae2b7ff;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+/* buttons */
+.btn-warning, .btn-info {
+    color: white;
+}
+.btn-warning:hover, .btn-info:hover {
+    color: white;
+}
+
+/* colors */
+
+.text-white {
+    color: white;
+}
+
+.card-footer {
+    background-color: white;
+}
+
+footer {
+    border-top: 1px solid var(--light);
+}
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+
+}
+ 
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {  }
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {  }
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {  }
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {  }
