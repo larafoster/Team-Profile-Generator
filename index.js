@@ -1,5 +1,9 @@
-const inquirer = require('inquirer');
-const fs = require('fs');
+const Employee = require("./lib/employee");
+const Manager = require("./lib/manager");
+const Engineer = require("./lib/engineer");
+const Intern = require("./lib/intern");
+const inquirer = require("inquirer");
+const fs = require("fs");
 const util = require('util');
 
 // create writeFile function using promises instead of a callback function
@@ -9,8 +13,8 @@ const promptUser = () => {
   return inquirer.prompt([
     {
       type: 'input',
-      name: 'name',
-      message: 'What is your name?',
+      name: 'firstname',
+      message: 'What is your first name?',
     },
     {
       type: 'input',
