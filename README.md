@@ -37,9 +37,9 @@
   - [video of test](https://drive.google.com/file/d/1Urtq2ulaKLz0LQWqg0xPf5PoC2brL74O/view)
 
   Screenshots of app:
-  - [img of inquirer prompts](.src/assets/inquirer.png)
-  - [img of test png](../src/assets/img/test1.png)
-  - [img of Web page](../src/assets/teamweb.png)
+  - [img of inquirer prompts](./src/assets/img/inquirer.png)
+  - [img of test png](./src/assets/img/test1.png)
+  - [img of Web page](./src/assets/img/teamweb.png)
 
   ## Credits 
   This project is created with the following technologies:
