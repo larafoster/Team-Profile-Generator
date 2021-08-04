@@ -1,79 +1,167 @@
-const Employee = require("./lib/employee");
-const Manager = require("./lib/manager");
-const Engineer = require("./lib/engineer");
-const Intern = require("./lib/intern");
-const inquirer = require("inquirer");
-const fs = require("fs");
-const util = require('util');
+//modules 
+const Employee = require ('./lib/employee');
+const Intern = require ('./lib/intern');
+const Engineer = require ('./lib/engineer');
+const Manager = require ('./lib/manager');
+const inquirer = require ('inquirer');
+const path = require ('path');
+const fs = require ('fs');
+//array to hold team data
+const myTeam = [];
 
-// create writeFile function using promises instead of a callback function
-const writeFileAsync = util.promisify(fs.writeFile);
+//main function collect data for team
+ const buildTeam = () => {
+   //function to collect data for each type of team member
+  const createManager = () => {
+    inquirer
+      .prompt ([
+        {
+          //I added instructions to let the user know what to expect.
+          type: 'confirm',
+          message: 'This app will build your team. Simply answer the prompts. Are you ready? ',
+          name: 'instructions',
+        },
 
-const promptUser = () => {
-  return inquirer.prompt([
-    {
-      type: 'input',
-      name: 'firstname',
-      message: 'What is your first name?',
-    },
-    {
-      type: 'input',
-      name: 'location',
-      message: 'Where are you from?',
-    },
-    {
-      type: 'input',
-      name: 'hobby',
-      message: 'What is your favorite hobby?',
-    },
-    {
-      type: 'input',
-      name: 'food',
-      message: 'What is your favorite food?',
-    },
-    {
-      type: 'input',
-      name: 'github',
-      message: 'Enter your GitHub Username',
-    },
-    {
-      type: 'input',
-      name: 'linkedin',
-      message: 'Enter your LinkedIn URL.',
-    },
-  ]);
-};
+        {
+          type: 'input',
+          name: 'managerName',
+          message: "What is the team manager's first name?",
+        },
+        {
+          type: 'input',
+          name: 'managerId',
+          message: "What is the team manager's id?",
+        },
+        {
+          type: 'input',
+          name: 'managerEmail',
+          message: "What is the team manager's email?",
+        },
+        {
+          type: 'input',
+          name: 'office',
+          message: "What is the team manager's office number?",
+        },
+      ])
+      .then (response => {
+        //create new manager object and push the user responses of manager to the myTeam array. 
+        const manager = new Manager (
+          response.managerName,
+          response.managerId,
+          response.managerEmail,
+          response.office
+        );
+        myTeam.push (manager);
+        createTeam (); //then run the createTeam function - that asks to add another type of team member 
+      });
+  }
+  createManager ();
+//createTeam uses switch case function to allow user to add more team members. if no more team members are entered, then it generates the html 
+  const createTeam = () => {
+    inquirer
+      .prompt ([
+        {
+          type: 'list',
+          name: 'addTeamMember',
+          message: 'Select another member of your team.',
+          choices: ['Engineer', 'Intern', 'My team is complete'],
+        },
+      ])
+      .then (selection => {
+        switch (selection.addTeamMember) {
+          case 'Engineer':
+            addEngineer ();
+            break;
+          case 'Intern':
+            addIntern ();
+            break;
+          default:
+            generateFile ();
+        }
+      });
+  }
 
-const generateHTML = (answers) =>
-  `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Hi! My name is ${answers.name}</h1>
-    <p class="lead">I am from ${answers.location}.</p>
-    <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-    <ul class="list-group">
-      <li class="list-group-item">My GitHub username is ${answers.github}</li>
-      <li class="list-group-item">LinkedIn: ${answers.linkedin}</li>
-    </ul>
-  </div>
-</div>
-</body>
-</html>`;
+  const addEngineer = () => {
+    inquirer
+      .prompt ([
+        {
+          type: 'input',
+          name: 'engineerName',
+          message: "What is the engineer's first name?",
+        },
+        {
+          type: 'input',
+          name: 'engineerId',
+          message: "What is the engineer's id?",
+        },
+        {
+          type: 'input',
+          name: 'engineerEmail',
+          message: "What is the engineer's email?",
+        },
+        {
+          type: 'input',
+          name: 'github',
+          message: "What is the engineer's GitHub username?",
+        },
+      ])
+      .then (response => {
+        const engineer = new Engineer (
+          response.engineerName,
+          response.engineerId,
+          response.engineerEmail,
+          response.github
+        );
+        myTeam.push (engineer);
+        createTeam (); 
+      });
+  }
 
-// Bonus using writeFileAsync as a promise
-const init = () => {
-  promptUser()
-    .then((answers) => writeFileAsync('index.html', generateHTML(answers)))
-    .then(() => console.log('Successfully wrote to index.html'))
-    .catch((err) => console.error(err));
-};
+  const addIntern = () => {
+    inquirer
+      .prompt ([
+        {
+          type: 'input',
+          name: 'internName',
+          message: "What is the intern's first name?",
+        },
+        {
+          type: 'input',
+          name: 'internId',
+          message: "What is the intern's id?",
+        },
+        {
+          type: 'input',
+          name: 'internEmail',
+          message: "What is the intern's email?",
+        },
+        {
+          type: 'input',
+          name: 'school',
+          message: "What is the intern's school?",
+        },
+      ])
+      .then (response => {
+        const intern = new Intern (
+          response.internName,
+          response.internId,
+          response.internEmail,
+          response.school
+        );
+        myTeam.push (intern);
+        createTeam ();
+      });
+  }
+  //the results will be in a directory called 'results'
+  const resultsDir = path.resolve (__dirname, 'results');
+  //the html file that is generated will reside inside the folder 'results'
+  const resultsPath = path.join (resultsDir, 'team.html');
 
-init();
+//this function uses the stored info in myTeam and uses the template to display the generated html page 
+  const generateFile = () => {
+    fs.writeFileSync (resultsPath, require ('./src/htmlTemplate.js') (myTeam));
+  }
+
+}
+
+buildTeam ();

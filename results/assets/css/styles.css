@@ -17,7 +17,13 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
-/* buttons */
+h4 {
+    text-transform: lowercase;
+}
+
+h4::first-letter {
+    text-transform: uppercase
+}
 
 .btn-warning, .btn-info {
     color: white;
@@ -27,17 +33,32 @@ body {
     color: white;
 }
 
-/* colors */
-
-.text-white {
-    color: white;
+.card-body {
+    flex: 0 0 0;
 }
 
 .card-footer {
     background-color: white;
 }
 
+.logo-img {
+    max-width: 500px;
+}
+
+.text-white {
+    color: white;
+}
+
 footer {
     border-top: 1px solid var(--light);
 }
 
+footer a {
+    color: var(--blue-md) !important;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--blue-dk) !important;
+    text-decoration: none;
+}

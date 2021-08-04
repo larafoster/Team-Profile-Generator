@@ -1,15 +1,15 @@
 # TEAM PROFILE GENERATOR
   
   ## Description   
-  You can quickly and easily create a README file by using a command-line application to generate one. This allows you, the project creator, to devote more time to working on the project.
+  This app allows the user to quickly and easily create a Team Profile by using a command-line application to generate a webpage that displays their team's basic info. The html page displays the team's information in a card format for quick access to the team's email and github repos.
 
   ## Table of Contents
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Features](#features)
+  - [Tests](#tests)
+  - [Project Links](#links)
   - [Contribute](#contribute)
   - [Credits](#credits)
-  - [Tests](#tests)
   - [License](#license)
 
   ## Installation
@@ -21,54 +21,66 @@
   ```
   
   ## Usage 
-   Once your node modules are installed, simply type 'node index' into the terminal and proceed through the questions. The generated Readme file will be in the Results FOLDER. There is help text that further assist you in building a robust and informative README.
-  
-  ## Features 
-  Some enhanced features include:
-  * This generator only creates content for the sections that have inputs; 
-  * The Table of Contents items are dynamically created based on whether content exists;
-  * There is help text throughout, so the user can expand on their readme content.
+   Once your node modules are installed, simply type 'node index' into the terminal and proceed through the questions. The generated html file will be in the Results FOLDER along with the css and image files.
 
-  ### Project Links
+  ## Tests 
+  Unit testing was performed with jest. See link under project links.    
+
+
+  ### Links
+  Project Links:
+  - [Github Repo](https://github.com/larafoster/Team-Profile-Generator) 
+
   View this app in motion:
-  - [video of inquirer prompts](https://drive.google.com/file/d/1kAdSyjUgZ3f_xrTxSnM_5e7xp7teTSE6/view)
-  - [video of README file in VS code](https://drive.google.com/file/d/12Rh7Mp_hGhtP3Ka5DpdROuLd4DwF33eG/view)
-  - [video of README file on Github](https://drive.google.com/file/d/1kaq-2mpnbI2IN4p_JRxE1BiqhyZv0wVr/view)
+  - [video of inquirer prompts](https://drive.google.com/file/d/1QYA5xb6A5U666e_Wfeg9YpTnfT--KJCh/view)
+  - [video of rendered webpage ](https://drive.google.com/file/d/1-lzszWnI41-aat3fb-qtOCeV_gVEb2s7/view)
+  - [video of test](https://drive.google.com/file/d/1Urtq2ulaKLz0LQWqg0xPf5PoC2brL74O/view)
 
   Screenshots of app:
-  - [img of inquirer prompts](./assets/Inquirer-prompts.png)
-  - [img of test png](./src/assets/img/test1.png)
-  - [img of README file on Github](./assets/Readme-on-Github.png)
-
-  - [Github Repo](https://github.com/larafoster/Good-Readme-Generator) 
+  - [img of inquirer prompts](.src/assets/inquirer.png)
+  - [img of test png](../src/assets/img/test1.png)
+  - [img of Web page](../src/assets/teamweb.png)
 
   ## Credits 
   This project is created with the following technologies:
   - [Node.js](https://nodejs.org/en/) 
   - [Inquirer.js](https://www.npmjs.com/package/inquirer) 
+  - [jest.js](https://www.npmjs.com/package/jest) 
+
+
   ***
  The code for this project was researched extensively. Here are a few of the tutorials I found helpful:
 
-   - [The “+=” operator](https://digifisk.com/front-end-web-development/javascript/concatenate-two-strings-in-javascript)
-
-      ```Just like the “+” operator, the “+=” operator can be used for concatenation as well. If used with numbers, it’ll add the numbers and assign it to the variable at the left-hand side of the operator. But when used with one or more strings, it’ll automatically transform into yet another string concatenation operator and concatenate the two operands, even if one of them is a number.```
+   - [Jest](https://github.com/facebook/jest/issues/3457)     
+    
+      ```test('name', () => {
+        expect({value: 'value'}).toBeTruthy();
+        expect(typeof {value: 'value'}).toBe('object');
+        })
+      ```
+    
   ***
 
-  - [if(x==2) dosomething();](https://stackoverflow.com/questions/11069278/omitting-the-second-expression-when-using-the-if-else-shorthand/32733892) 
+  - [jest](https://stackoverflow.com/questions/50818474/how-to-properly-test-if-the-type-of-the-result-is-a-javascript-function-in-jes) 
 
-    ```This is from stackoverflow: Omitting the second expression when using the if-else shorthand. user: ajax333221```
-          
+    ```describe("", () => {
+      it("test", () => {
+      const somethingThatReturnsAFunction = () => () => {};
+      const theResult = somethingThatReturnsAFunction();
+      expect(typeof theResult).toBe("function");
+      });
+     ```     
   ***
 
-  - [Template Literals and String interpolation](https://dmitripavlutin.com/string-interpolation-in-javascript/) 
+  - [.join .map .filter](https://medium.com/poka-techblog/simplify-your-javascript-use-map-reduce-and-filter-bd02c593cc2d) 
 
-    ```String interpolation is a process where you can pass a valid JavaScript expression such as a variable into a template literal. The expression inside ${} is evaluated, and the result of the evaluation is embedded into the string.  ```
+    ```Say we want two arrays now: one for rebel pilots, the other one for imperials. With .filter() it couldn’t be easier!```
 
    ***
 
   - [Additional examples on Template Literals and expression interpolation](https://ado.xyz/blog/better-strings-in-javascript-with-template-literals/) 
 
-    ```The syntax for expression interpolation is ${}. Anything we place between the curly brackets will be executed as code. In here we can pass variables, functions, or other logic that will be evaluated and it’s final value displayed.  ```  
+    ```The syntax for expression interpolation is ${}. Anything we place between the curly brackets will be executed as code. In here we can pass variables, functions, or other logic that will be evaluated and it’s final value displayed.```  
 
   ## Contribute
   Please feel free to fork this project and create your own branch. Any suggestions for improvement are welcomed.
